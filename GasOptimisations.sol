@@ -2,20 +2,9 @@
 pragma solidity ^0.8.13;
 
 contract GasOptimisations {
-    // This contract is a demo of gas optimisations on a solidity function 
-    // Tested in Remix
-
-    // ORIGINAL - 56653 gas
-    // use calldata - 54004 gas
-    // load state variables to memory - 52917 gas
-    // short circuit (Moved bools inline) - 52333 gas
-    // loop increments - 51653 gas
-    // cache array length - 51586 gas
-    // load array elements to memory - 51236 gas
-
     uint public total;
 
-    // OPTIMISED: final result = 51236 gas (A saving of 5417 gas)
+    // OPTIMISED: result = 51236 gas
     // input array = [1, 3, 4, 7, 8, 13, 46, 77, 80, 99]
     function addIfEvenOrTheNumber7Optimised(uint[] calldata array) external {
         uint _total = total;
